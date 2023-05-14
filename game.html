@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Ten: A game</title>
+  </head>
+  <body>
+    <h1>Ten: A game</h1>
+    <p>
+      Using the switches, allow all the squares to be green. Some squares take
+      more than 1 click to turn green. There are negative numbers as well.
+      <br /><br />But wait, there's a catch: All the values of the switches and
+      the constant value must add up to 10.
+    </p>
+    <div class="game">
+      <div class="control">
+        <div class="switch">
+          <button
+            title="Click to increase the value of this switch"
+            onclick="increase(1)"
+          >
+            +</button
+          ><span class="gate1val">0</span
+          ><button
+            title="Click to decrease the value of this switch"
+            onclick="decrease(1)"
+          >
+            -</button
+          ><br />
+          <p>Switch 1</p>
+        </div>
+        <div class="switch">
+          <button
+            title="Click to increase the value of this switch"
+            onclick="increase(2)"
+          >
+            +</button
+          ><span class="gate2val">0</span
+          ><button
+            title="Click to decrease the value of this switch"
+            onclick="decrease(2)"
+          >
+            -</button
+          ><br />
+          <p>Switch 2</p>
+        </div>
+        <div class="switch">
+          <button
+            disabled
+            style="cursor: not-allowed"
+            title="This is a constant: not changeable by player"
+          >
+            +</button
+          ><span class="constant">0</span
+          ><button
+            disabled
+            style="cursor: not-allowed"
+            title="This is a constant: not changeable by player"
+          >
+            -</button
+          ><br />
+          <p>Constant 1</p>
+        </div>
+        <div class="switch">
+          <span class="currentSum">0</span>
+          <br />
+          <p>Current sum</p>
+        </div>
+        <div class="switch">
+          <button class="nxt" onclick="nextLVL()">Next Level</button>
+          <button class="nonxt" disabled>Level not solved</button>
+        </div>
+      </div>
+      <div class="view">
+        <div class="path">
+          <span class="bigSpace"></span>
+          <span class="gate1"></span>
+          <span class="bigSpace"></span>
+          <span class="gate2"></span>
+          <span class="bigSpace"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
