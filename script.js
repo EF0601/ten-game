@@ -20,15 +20,16 @@ let currentSum = 0;
 let constant = 0;
 let solved = 0;
 let ultimateSum = 10;
+let hinted = 0;
 
 function increase(gate){
      switch (gate) {
           case 1:
-               gate1++;
+               gate1 = gate1 + 3;
                gate1dis.textContent = gate1;
                break;
           case 2:
-               gate2++;
+               gate2 = gate2 + 5;
                gate2dis.textContent = gate2;
                break;
           default:
@@ -41,11 +42,11 @@ function increase(gate){
 function decrease(gate){
      switch (gate) {
           case 1:
-               gate1--;
+               gate1 = gate1 - 3;
                gate1dis.textContent = gate1;
                break;
           case 2:
-               gate2--;
+               gate2 = gate2 - 5;
                gate2dis.textContent = gate2;
                break;
           default:
@@ -89,6 +90,7 @@ function updateGTs(){
 function nextLVL() {
      solved++
      document.querySelector('.solved').textContent = solved;
+     document.querySelector('.hints').textContent = "Not shown";
      randomize()
      gate1 = 0;
      gate2 = 0;
@@ -110,6 +112,12 @@ function randomize(){
      console.log(gate1store);
      console.log(gate2store);
      console.log(constant);
+
+     if ((Math.floor(Math.random() * 2) + 1) === 1) {
+          hinted = gate1store;
+     } else {
+          hinted = gate2store;
+     }
 
      constantDis.textContent = constant;
      updateGTs();
@@ -187,7 +195,7 @@ function resets(_type){
                break;
           
      }
-     document.querySelector('.resets').textContent = "This game has been reset!";
+     document.querySelector('.resets').textContent = "This game has been reset/hinted!";
 }
 
 function ultimate(){
@@ -204,8 +212,14 @@ function norm(){
      document.querySelector('.solved').textContent = solved;
 }
 
+function hint(){
+     document.querySelector('.hints').textContent = hinted;
+     document.querySelector('.resets').textContent = "Hint/reset was used!";
+}
+
 //CUSTOM FIRST LEVEL
 setTimeout(startStopwatch, 1000)
+hinted = 5;
 constant = 2;
 constantDis.textContent = constant;
 updateGTs()
