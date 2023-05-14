@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modal.css" />
     <title>Ten: A game</title>
   </head>
   <body>
@@ -85,5 +86,48 @@
       </div>
     </div>
   </body>
-  <script src="script.js"></script>
+
+  <footer>
+    <h2>Statistics:</h2>
+    <br />
+    <h3>Timer:</h3>
+    <span class="stopwatch">0:00</span>
+    <h3>Solved:</h3>
+    <span class="solved">0</span>
+    <h3 class="resets">The reset has not been used.</h3>
+    <br />
+    <button id="myBtn" style="font-size: x-large">Open Settings</button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Settings</h3>
+        <div class="settings">
+          <button onclick="ultimate()">ULTIMATE MODE</button>
+          <p>In ultimate mode, all numbers add up to 25 instead.</p>
+        </div>
+        <div class="settings">
+          <button onclick="norm()">NORMAL MODE</button>
+          <p>In normal mode, all numbers add up to 10, as usual.</p>
+        </div>
+        <div class="settings">
+          <button onclick="resets(1)">RESET ALL</button>
+          <p>
+            This will reset everything, but will not show the first tutorial
+            puzzle.
+          </p>
+        </div>
+        <div class="settings">
+          <button onclick="resets(2)">SKIP PUZZLE</button>
+          <p>
+            This will skip the puzzle, but the score will not be eligible for a
+            record.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>
+<script src="script.js"></script>
+<script src="modal.js"></script>

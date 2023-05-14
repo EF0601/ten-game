@@ -50,11 +50,11 @@ body{
      color: white;
      border: 5px solid yellow;
      padding: 2px;
-     width: 95px;
+     width: 105px;
      margin: 20px;
      height: 60px;
 }
-.switch button{
+button{
      background-color: green;
      color: black;
      border: none;
