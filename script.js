@@ -196,6 +196,7 @@ function resets(_type){
           
      }
      document.querySelector('.resets').textContent = "This game has been reset/hinted!";
+     document.getElementById("myModal").style.display = "none";
 }
 
 function ultimate(){
@@ -203,6 +204,7 @@ function ultimate(){
      nextLVL()
      solved--;
      document.querySelector('.solved').textContent = solved;
+     document.getElementById("myModal").style.display = "none";
 }
 
 function norm(){
@@ -210,6 +212,7 @@ function norm(){
      nextLVL()
      solved--;
      document.querySelector('.solved').textContent = solved;
+     document.getElementById("myModal").style.display = "none";
 }
 
 function hint(){
