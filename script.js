@@ -21,6 +21,7 @@ let constant = 0;
 let solved = 0;
 let ultimateSum = 10;
 let hinted = 0;
+let speedrun = false;
 
 function increase(gate) {
      switch (gate) {
@@ -88,15 +89,31 @@ function updateGTs() {
 }
 
 function nextLVL() {
-     solved++;
-     document.querySelector('.solved').textContent = solved;
-     document.querySelector('.hints').textContent = "Not shown";
-     randomize();
-     gate1 = 0;
-     gate2 = 0;
-     updateGTs();
-     stopStopwatch();
-     setTimeout(startStopwatch, 1000);
+     if (speedrun != true) {
+          solved++;
+          document.querySelector('.solved').textContent = solved;
+          document.querySelector('.hints').textContent = "Not shown";
+          randomize();
+          gate1 = 0;
+          gate2 = 0;
+          updateGTs();
+          stopStopwatch();
+          setTimeout(startStopwatch, 1000);
+     }
+     if(speedrun === true){
+          if (solved != 15) {
+               solved++;
+               document.querySelector('.solved').textContent = solved;
+               document.querySelector('.hints').textContent = "Not available";
+               randomize();
+               gate1 = 0;
+               gate2 = 0;
+               updateGTs();
+          }
+          if (solved == 15) {
+               stopStopwatch();
+          }
+     }
 }
 
 //randomize-er
@@ -207,17 +224,38 @@ function ultimate() {
      document.getElementById("myModal").style.display = "none";
 }
 
-function norm() {
-     ultimateSum = 10;
-     nextLVL();
-     solved--;
-     document.querySelector('.solved').textContent = solved;
-     document.getElementById("myModal").style.display = "none";
+function norm(speeds) {
+     if (speeds === false && speedrun != true) {
+          ultimateSum = 10;
+          nextLVL();
+          solved--;
+          document.querySelector('.solved').textContent = solved;
+          document.getElementById("myModal").style.display = "none";
+          speedrun = false;
+     }
+     if (speeds === false && speedrun != false) {
+          speedrun = false;
+          norm(false);
+     }
+     if (speeds === true) {
+          ultimateSum = 10;
+          nextLVL();
+          solved--;
+          document.querySelector('.solved').textContent = solved;
+          document.getElementById("myModal").style.display = "none";
+     }
+}
+
+function speed(){
+     norm(true);
+     speedrun = true;
 }
 
 function hint() {
-     document.querySelector('.hints').textContent = hinted;
-     document.querySelector('.resets').textContent = "Hint/reset was used!";
+     if (speedrun != true) {
+          document.querySelector('.hints').textContent = hinted;
+          document.querySelector('.resets').textContent = "Hint/reset was used!";
+     }
 }
 
 //CUSTOM FIRST LEVEL

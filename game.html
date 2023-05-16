@@ -108,8 +108,12 @@
           <p>In ultimate mode, all numbers add up to 25 instead.</p>
         </div>
         <div class="settings">
-          <button onclick="norm()">NORMAL MODE</button>
+          <button onclick="norm(false)">NORMAL MODE</button>
           <p>In normal mode, all numbers add up to 10, as usual.</p>
+        </div>
+        <div class="settings">
+          <button onclick="speed()">SPEEDRUN MODE</button>
+          <p>When speedrun mode is enabled, the game will <i>not</i> continue after 15 solved puzzles. The usage of hints and skips will be recorded. The timer will <i>not</i> stop and restart between puzzles. This is for hardcore players! Press NORMAL MODE to disable.</p>
         </div>
         <div class="settings">
           <button onclick="resets(1)">RESET ALL</button>
