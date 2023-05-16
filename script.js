@@ -22,7 +22,7 @@ let solved = 0;
 let ultimateSum = 10;
 let hinted = 0;
 
-function increase(gate){
+function increase(gate) {
      switch (gate) {
           case 1:
                gate1 = gate1 + 3;
@@ -39,7 +39,7 @@ function increase(gate){
      updateGTs();
 }
 
-function decrease(gate){
+function decrease(gate) {
      switch (gate) {
           case 1:
                gate1 = gate1 - 3;
@@ -56,28 +56,28 @@ function decrease(gate){
      updateGTs();
 }
 
-function updateGTs(){
-     if(gate1 != 0 && (gate1 % 3) === 0){
+function updateGTs() {
+     if (gate1 != 0 && (gate1 % 3) === 0) {
           gate1color.style.backgroundColor = "green";
      }
-     else{
+     else {
           gate1color.style.backgroundColor = "red";
      }
-     if(gate2 != 0 && (gate2 % 5) === 0){
+     if (gate2 != 0 && (gate2 % 5) === 0) {
           gate2color.style.backgroundColor = "green";
      }
-     else{
+     else {
           gate2color.style.backgroundColor = "red";
      }
 
      currentSum = gate1 + gate2 + constant;
      currentSumDis.textContent = currentSum;
 
-     if(currentSum === ultimateSum && gate1 != 0 && (gate1 % 3) === 0 && gate2 != 0 && (gate2 % 5) === 0){
+     if (currentSum === ultimateSum && gate1 != 0 && (gate1 % 3) === 0 && gate2 != 0 && (gate2 % 5) === 0) {
           nxtBtn.style.display = "inline";
           noNxtBtn.style.display = "none";
      }
-     else{
+     else {
           nxtBtn.style.display = "none";
           noNxtBtn.style.display = "inline";
      }
@@ -100,14 +100,14 @@ function nextLVL() {
 }
 
 //randomize-er
-function randomize(){
+function randomize() {
      let gate1store;
      let gate2store;
      do {
           gate1store = randomNumberDivisibleByX(3);
           gate2store = randomNumberDivisibleByX(5);
           constant = randomNumberDivisibleByX(1);
-     } while (constant + gate1store + gate2store !== ultimateSum || Math.abs(gate1store) === Math.abs(constant)|| Math.abs(gate2store) === Math.abs(constant));
+     } while (constant + gate1store + gate2store !== ultimateSum || Math.abs(gate1store) === Math.abs(constant) || Math.abs(gate2store) === Math.abs(constant));
 
      console.log(gate1store);
      console.log(gate2store);
@@ -124,58 +124,58 @@ function randomize(){
 }
 
 function randomNumberDivisibleByX(divisibility) {
-  var randomNumber;
+     var randomNumber;
 
-  do {
-    randomNumber = Math.floor(Math.random() * (ultimateSum * 4)) - (ultimateSum * 2);
-  } while (randomNumber % divisibility !== 0 || randomNumber === 0);
+     do {
+          randomNumber = Math.floor(Math.random() * (ultimateSum * 4)) - (ultimateSum * 2);
+     } while (randomNumber % divisibility !== 0 || randomNumber === 0);
 
-  return randomNumber;
+     return randomNumber;
 }
 
 //stop watch
 var startTime;
-    var running = false;
+var running = false;
 
-    function startStopwatch() {
-      if (!running) {
-        startTime = new Date().getTime() - 1000;
-        running = true;
-        console.log("Stopwatch started.");
+function startStopwatch() {
+     if (!running) {
+          startTime = new Date().getTime() - 1000;
+          running = true;
+          console.log("Stopwatch started.");
 
-        // Update the time display every second
-        setInterval(updateStopwatchTime, 10);
-      } else {
-        console.log("Stopwatch is already running.");
-      }
-    }
+          // Update the time display every second
+          setInterval(updateStopwatchTime, 10);
+     } else {
+          console.log("Stopwatch is already running.");
+     }
+}
 
-    function updateStopwatchTime() {
-      if (running) {
-        var currentTime = new Date().getTime();
-        var elapsedTime = (currentTime - startTime) / 1000; // Convert to seconds
-     //    elapsedTime = Math.round(elapsedTime);
+function updateStopwatchTime() {
+     if (running) {
+          var currentTime = new Date().getTime();
+          var elapsedTime = (currentTime - startTime) / 1000; // Convert to seconds
+          //    elapsedTime = Math.round(elapsedTime);
 
-        // Update the HTML element with the elapsed time
-        document.querySelector(".stopwatch").textContent = elapsedTime.toFixed(2) + " seconds";
-      }
-    }
+          // Update the HTML element with the elapsed time
+          document.querySelector(".stopwatch").textContent = elapsedTime.toFixed(2) + " seconds";
+     }
+}
 
-    function stopStopwatch() {
-      if (running) {
-        var endTime = new Date().getTime();
-        var elapsedTime = (endTime - startTime) / 1000; // Convert to seconds
-        running = false;
-        console.log("Stopwatch stopped. Elapsed time: " + elapsedTime.toFixed(2) + " seconds.");
+function stopStopwatch() {
+     if (running) {
+          var endTime = new Date().getTime();
+          var elapsedTime = (endTime - startTime) / 1000; // Convert to seconds
+          running = false;
+          console.log("Stopwatch stopped. Elapsed time: " + elapsedTime.toFixed(2) + " seconds.");
 
-        // Update the HTML element with the final elapsed time
-        document.querySelector(".stopwatch").textContent = elapsedTime.toFixed(2) + " seconds";
-      } else {
-        console.log("Stopwatch is not running.");
-      }
-    }
+          // Update the HTML element with the final elapsed time
+          document.querySelector(".stopwatch").textContent = elapsedTime.toFixed(2) + " seconds";
+     } else {
+          console.log("Stopwatch is not running.");
+     }
+}
 
-function resets(_type){
+function resets(_type) {
      switch (_type) {
           case 2:
                nextLVL();
@@ -199,7 +199,7 @@ function resets(_type){
      document.getElementById("myModal").style.display = "none";
 }
 
-function ultimate(){
+function ultimate() {
      ultimateSum = 25;
      nextLVL();
      solved--;
@@ -207,7 +207,7 @@ function ultimate(){
      document.getElementById("myModal").style.display = "none";
 }
 
-function norm(){
+function norm() {
      ultimateSum = 10;
      nextLVL();
      solved--;
@@ -215,7 +215,7 @@ function norm(){
      document.getElementById("myModal").style.display = "none";
 }
 
-function hint(){
+function hint() {
      document.querySelector('.hints').textContent = hinted;
      document.querySelector('.resets').textContent = "Hint/reset was used!";
 }
