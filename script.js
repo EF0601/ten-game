@@ -33,10 +33,10 @@ function increase(gate){
                gate2dis.textContent = gate2;
                break;
           default:
-               console.log("An error occurred. Check the ''increase function'' in script.js")
+               console.log("An error occurred. Check the ''increase function'' in script.js");
                break;
      }
-     updateGTs()
+     updateGTs();
 }
 
 function decrease(gate){
@@ -50,10 +50,10 @@ function decrease(gate){
                gate2dis.textContent = gate2;
                break;
           default:
-               console.log("An error occurred. Check the ''increase function'' in script.js")
+               console.log("An error occurred. Check the ''increase function'' in script.js");
                break;
      }
-     updateGTs()
+     updateGTs();
 }
 
 function updateGTs(){
@@ -88,14 +88,14 @@ function updateGTs(){
 }
 
 function nextLVL() {
-     solved++
+     solved++;
      document.querySelector('.solved').textContent = solved;
      document.querySelector('.hints').textContent = "Not shown";
-     randomize()
+     randomize();
      gate1 = 0;
      gate2 = 0;
      updateGTs();
-     stopStopwatch()
+     stopStopwatch();
      setTimeout(startStopwatch, 1000);
 }
 
@@ -107,7 +107,7 @@ function randomize(){
           gate1store = randomNumberDivisibleByX(3);
           gate2store = randomNumberDivisibleByX(5);
           constant = randomNumberDivisibleByX(1);
-     } while (constant + gate1store + gate2store !== ultimateSum || Math.abs(gate1store) === Math.abs(constant)|| Math.abs(gate2store) === Math.abs(constant))
+     } while (constant + gate1store + gate2store !== ultimateSum || Math.abs(gate1store) === Math.abs(constant)|| Math.abs(gate2store) === Math.abs(constant));
 
      console.log(gate1store);
      console.log(gate2store);
@@ -178,13 +178,13 @@ var startTime;
 function resets(_type){
      switch (_type) {
           case 2:
-               nextLVL()
+               nextLVL();
                solved--;
                document.querySelector('.solved').textContent = solved;
                break;
-          
+
           case 1:
-               
+
                nextLVL();
                solved = 0;
                // solved--;
@@ -193,7 +193,7 @@ function resets(_type){
           default:
                console.log("error with reset!");
                break;
-          
+
      }
      document.querySelector('.resets').textContent = "This game has been reset/hinted!";
      document.getElementById("myModal").style.display = "none";
@@ -201,7 +201,7 @@ function resets(_type){
 
 function ultimate(){
      ultimateSum = 25;
-     nextLVL()
+     nextLVL();
      solved--;
      document.querySelector('.solved').textContent = solved;
      document.getElementById("myModal").style.display = "none";
@@ -209,7 +209,7 @@ function ultimate(){
 
 function norm(){
      ultimateSum = 10;
-     nextLVL()
+     nextLVL();
      solved--;
      document.querySelector('.solved').textContent = solved;
      document.getElementById("myModal").style.display = "none";
@@ -221,8 +221,8 @@ function hint(){
 }
 
 //CUSTOM FIRST LEVEL
-setTimeout(startStopwatch, 1000)
+setTimeout(startStopwatch, 1000);
 hinted = 5;
 constant = 2;
 constantDis.textContent = constant;
-updateGTs()
+updateGTs();
