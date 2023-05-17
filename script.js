@@ -23,6 +23,10 @@ let ultimateSum = 10;
 let hinted = 0;
 let speedrun = false;
 
+let shortGate1 = 3;
+let shortGate2 = 5;
+let shortConstant = 2;
+
 function increase(gate) {
      switch (gate) {
           case 1:
@@ -124,7 +128,7 @@ function randomize() {
           gate1store = randomNumberDivisibleByX(3);
           gate2store = randomNumberDivisibleByX(5);
           constant = randomNumberDivisibleByX(1);
-     } while (constant + gate1store + gate2store !== ultimateSum || Math.abs(gate1store) === Math.abs(constant) || Math.abs(gate2store) === Math.abs(constant));
+     } while (constant + gate1store + gate2store !== ultimateSum || Math.abs(gate1store) === Math.abs(constant) || Math.abs(gate2store) === Math.abs(constant) || Math.abs(gate1store) === Math.abs(shortGate1) || Math.abs(gate2store) === Math.abs(shortGate2) || Math.abs(constant) === Math.abs(shortConstant));
 
      console.log(gate1store);
      console.log(gate2store);
@@ -135,6 +139,10 @@ function randomize() {
      } else {
           hinted = gate2store;
      }
+
+     shortGate1 = gate1store;
+     shortGate2 = gate2store;
+     shortConstant = constant;
 
      constantDis.textContent = constant;
      updateGTs();
